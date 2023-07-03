@@ -1,1 +1,2 @@
 # PMGLRSS
+This contains the code, software, and documentation for the Pantry Management, Grocery List, and Recipe Storage System (PMGLRSS) project. This is a project I began in July of 2023 to create a system that would make pantry management, grocery shopping, and meal planning easier for my friends and family. The goal is to create this as a smartphone app, and it will start out as a software program on the computer for now. This is still in development.
