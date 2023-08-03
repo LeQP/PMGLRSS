@@ -1,0 +1,70 @@
+'''
+JSON Notes: Used to help understand how to write into JSONs and read into them
+
+JSON Basics:
+    Dictionaries that are stored as files
+    Basically dictionaries that can be stored as files
+    Difference is the use of {} to close them
+    Each line is a key, value pair
+    Note: keys have to be a basic data type (int, bool, string, etc.) so no tuples or made up data types
+
+'''
+
+import json
+
+# Use .dumps() to create the JSON files
+#   inputs references: https://www.geeksforgeeks.org/json-dumps-in-python/
+#   indent - format the indents of items in the dict
+#   sort_keys - allows items to be sorted by key value
+#  
+sampleDict = {
+    "names" : ["John", "Kevin", "Harold"],
+    "id" : 0,
+    "key" : "value"
+}
+
+sampleJson = json.dumps(sampleDict)
+sampleJsonIndent = json.dumps(sampleDict, indent = 4)
+sampleJsonSort = json.dumps(sampleDict, indent = 4, sort_keys=True)
+
+# Write into files with "with open(<name>, "w") as <var name> "
+#   Note: files also close automically by using with open()
+with open("sample1.json", "w") as newFile:
+    newFile.write(sampleJson)
+
+with open("sample2.json", "w") as newFile:
+    newFile.write(sampleJsonIndent)
+
+with open("sample3.json", "w") as newFile:
+    newFile.write(sampleJsonSort)
+
+# Read JSON files with "with open(<name>, "r") as <var name> "
+#   Use load() to access the file
+#   Error occurs if file name cannot be found when using "r"
+#   Json files are of type dict
+with open("sample1.json", "r") as openFile:
+    readJson1 = json.load(openFile)
+
+with open("sample2.json", "r") as openFile:
+    readJson2 = json.load(openFile)
+
+with open("sample3.json", "r") as openFile:
+    readJson3 = json.load(openFile)
+
+
+# Access keys in a json file with <json file>[<key>]
+print(readJson1["names"])
+
+
+# Add a new item
+#   1. Update the dict first
+readJson3["addition"] = "New insertion"
+
+#   2. Dump the updated dict as a new JSON entity
+sampleJsonSort = json.dumps(readJson3, indent = 4, sort_keys=True)
+
+#   3. Write into the json file
+with open("sample3.json", "w") as newFile:
+    newFile.write(sampleJsonSort)
+
+
